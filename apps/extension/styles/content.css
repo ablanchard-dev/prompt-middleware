@@ -1,0 +1,64 @@
+.pmw-optimize-button {
+  margin-left: 8px;
+  padding: 6px 10px;
+  border: 1px solid #777;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #111111;
+  font: inherit;
+  cursor: pointer;
+}
+
+.pmw-preview {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 2147483647;
+  width: min(560px, calc(100vw - 48px));
+  padding: 16px;
+  border: 1px solid #666;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #111111;
+  box-shadow: 0 12px 40px rgb(0 0 0 / 22%);
+}
+
+.pmw-preview textarea {
+  width: 100%;
+  min-height: 220px;
+}
+
+.pmw-status {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 2147483647;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  max-width: min(520px, calc(100vw - 48px));
+  padding: 12px;
+  border: 1px solid #666;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #111111;
+  box-shadow: 0 12px 40px rgb(0 0 0 / 22%);
+}
+
+.pmw-status-error {
+  border-color: #b42318;
+}
+
+.pmw-status-success {
+  border-color: #067647;
+}
+
+.pmw-status button {
+  padding: 4px 8px;
+  border: 1px solid #777;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #111111;
+  font: inherit;
+  cursor: pointer;
+}

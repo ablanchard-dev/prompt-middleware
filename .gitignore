@@ -1,0 +1,10 @@
+target/
+node_modules/
+dist/
+.env
+.env.*
+*.log
+*.tsbuildinfo
+.chrome-e2e-profile/
+.playwright-profile/
+apps/extension/test-results/

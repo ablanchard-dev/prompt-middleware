@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OptimizeResponse",
+  "type": "object",
+  "required": [
+    "optimized_prompt",
+    "detected_language",
+    "detected_domain",
+    "detected_intent",
+    "confidence",
+    "quality_score",
+    "warnings",
+    "needs_clarification",
+    "clarification_questions"
+  ]
+}
+

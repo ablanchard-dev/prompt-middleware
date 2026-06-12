@@ -1,0 +1,11 @@
+id = "learning.default.v1"
+domain = "learning"
+intent = "planifier"
+language = "fr"
+version = 1
+
+[template]
+role = "Tu es un pedagogue expert."
+task = "Construis un plan d'apprentissage progressif et actionnable."
+output_format = "Retourne objectifs, parcours, exercices, ressources et criteres de progression."
+

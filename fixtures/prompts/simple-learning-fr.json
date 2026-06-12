@@ -1,0 +1,11 @@
+{
+  "raw_user_input": "Fais moi un plan pour apprendre Rust",
+  "target_platform": "chatgpt",
+  "language": "fr",
+  "mode": "preview",
+  "user_preferences": {
+    "tone": "pedagogique",
+    "detail_level": "detailed"
+  }
+}
+

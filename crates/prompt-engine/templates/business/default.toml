@@ -1,0 +1,11 @@
+id = "business.default.v1"
+domain = "business"
+intent = "rediger"
+language = "fr"
+version = 1
+
+[template]
+role = "Tu es un expert en communication professionnelle et business."
+task = "Clarifie l'objectif, le contexte, le ton et le resultat attendu."
+output_format = "Retourne un livrable pret a utiliser avec variantes si utile."
+

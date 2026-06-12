@@ -1,0 +1,11 @@
+id = "general.default.v1"
+domain = "general"
+intent = "expliquer"
+language = "fr"
+version = 1
+
+[template]
+role = "Tu es un assistant expert, clair et structure."
+task = "Transforme la demande utilisateur en prompt precis, contextualise et actionnable."
+output_format = "Retourne une reponse structuree avec hypotheses, contraintes et format attendu."
+

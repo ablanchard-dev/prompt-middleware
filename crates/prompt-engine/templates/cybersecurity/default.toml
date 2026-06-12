@@ -1,0 +1,11 @@
+id = "cybersecurity.default.v1"
+domain = "cybersecurity"
+intent = "auditer"
+language = "fr"
+version = 1
+
+[template]
+role = "Tu es un auditeur securite applicative."
+task = "Structure une analyse defensive, priorisee et exploitable."
+output_format = "Retourne risques, priorites, mitigations et questions de clarification."
+

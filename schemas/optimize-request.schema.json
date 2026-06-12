@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OptimizeRequest",
+  "type": "object",
+  "required": ["raw_user_input", "target_platform", "language", "mode", "user_preferences"],
+  "properties": {
+    "raw_user_input": { "type": "string", "minLength": 1, "maxLength": 20000 },
+    "target_platform": { "enum": ["chatgpt", "claude", "gemini", "deepseek", "unknown"] },
+    "language": { "enum": ["fr", "en", "auto"] },
+    "mode": { "enum": ["preview", "replace"] },
+    "user_preferences": {
+      "type": "object",
+      "required": ["detail_level"],
+      "properties": {
+        "tone": { "type": ["string", "null"] },
+        "detail_level": { "enum": ["short", "normal", "detailed", "expert"] }
+      }
+    }
+  }
+}
+
