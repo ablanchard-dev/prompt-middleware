@@ -1,3 +1,11 @@
+//! Pure, local-first prompt optimization engine.
+//!
+//! [`optimize_prompt`] turns a raw user prompt into a structured, optimized
+//! prompt using only local rules, heuristics, scoring, and templates — no
+//! network, no async, no IO. That keeps the crate portable (WASM-ready) and
+//! easy to test. Templates are data and can be overridden through
+//! [`config::EngineConfig`].
+
 pub mod builder;
 pub mod classification;
 pub mod config;
@@ -17,6 +25,31 @@ use shared_types::api::{OptimizeRequest, OptimizeResponse};
 use templates::selector::select_template;
 use types::EngineError;
 
+/// Optimize a raw user prompt into a structured prompt.
+///
+/// Detects the language, intent, and domain of `request.raw_user_input`,
+/// selects a template from [`EngineConfig`], renders the optimized prompt, and
+/// scores its quality. Returns [`EngineError`] for empty or oversized input.
+///
+/// # Examples
+///
+/// ```
+/// use prompt_engine::{config::EngineConfig, optimize_prompt};
+/// use shared_types::api::{OptimizeRequest, UserPreferences};
+/// use shared_types::domain::{DetailLevel, OptimizeMode, RequestedLanguage, TargetPlatform};
+///
+/// let request = OptimizeRequest {
+///     raw_user_input: "corrige mon code python".to_owned(),
+///     target_platform: TargetPlatform::Chatgpt,
+///     language: RequestedLanguage::Auto,
+///     mode: OptimizeMode::Preview,
+///     user_preferences: UserPreferences { tone: None, detail_level: DetailLevel::Normal },
+/// };
+///
+/// let response = optimize_prompt(request, &EngineConfig::default()).unwrap();
+/// assert_eq!(response.detected_domain, "code");
+/// assert!(!response.optimized_prompt.is_empty());
+/// ```
 pub fn optimize_prompt(
     request: OptimizeRequest,
     config: &EngineConfig,

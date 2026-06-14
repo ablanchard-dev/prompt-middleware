@@ -31,3 +31,9 @@ echo "write unit tests for my parser" | prompt-optimize --lang en --json
 - No business logic in the content script.
 - No IO, network, database, or async runtime in `prompt-engine`.
 
+## Quality
+
+- `cargo test` runs unit, integration, property-based (proptest), and doc tests.
+- `cargo bench` runs a Criterion benchmark of the engine (~0.7 µs per call).
+- CI enforces `cargo fmt`, `clippy -D warnings`, tests, and the extension checks.
+
