@@ -99,4 +99,36 @@ mod tests {
         assert_eq!(response.detected_domain, "code");
         assert_eq!(response.detected_intent, "corriger");
     }
+
+    #[test]
+    fn uses_a_template_overridden_through_the_config() {
+        use crate::domain::{prompt::PromptTemplate, prompt_domain::PromptDomain};
+
+        let mut config = EngineConfig::default();
+        config.templates.insert(
+            PromptDomain::Code,
+            PromptTemplate {
+                id: "code.custom".to_owned(),
+                role: "ROLE_PERSONNALISE_XYZ".to_owned(),
+                task: "tache".to_owned(),
+                output_format: "format".to_owned(),
+            },
+        );
+
+        let request = OptimizeRequest {
+            raw_user_input: "corrige ce bug dans mon code".to_owned(),
+            target_platform: TargetPlatform::Chatgpt,
+            language: RequestedLanguage::Fr,
+            mode: OptimizeMode::Preview,
+            user_preferences: UserPreferences {
+                tone: None,
+                detail_level: DetailLevel::Normal,
+            },
+        };
+
+        let response = optimize_prompt(request, &config).unwrap();
+
+        assert_eq!(response.detected_domain, "code");
+        assert!(response.optimized_prompt.contains("ROLE_PERSONNALISE_XYZ"));
+    }
 }
