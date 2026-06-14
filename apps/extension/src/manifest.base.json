@@ -4,6 +4,9 @@
   "version": "0.1.0",
   "description": "Optimise localement vos prompts avant envoi aux interfaces LLM.",
   "permissions": ["storage"],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  },
   "host_permissions": [
     "https://chatgpt.com/*",
     "https://chat.openai.com/*",

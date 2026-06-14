@@ -45,7 +45,10 @@ sh scripts/build-wasm.sh nodejs pkg
 node scripts/wasm-smoke.mjs        # -> fr / code / corriger
 ```
 
-Use `sh scripts/build-wasm.sh web pkg` to produce a browser bundle.
+Use `sh scripts/build-wasm.sh web pkg` to produce a browser bundle. The
+extension's service worker loads this WASM and optimizes prompts on-device,
+falling back to the local server only if the WASM module is unavailable
+(`npm --prefix apps/extension run build` bundles it into `dist/`).
 
 ## Quality
 
