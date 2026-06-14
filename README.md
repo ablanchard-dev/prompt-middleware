@@ -9,7 +9,8 @@ Local-first browser middleware that optimizes user prompts before they are sent 
 - `apps/extension`: browser UX only.
 - `apps/local-server`: local HTTP transport and configuration.
 - `apps/cli`: standalone `prompt-optimize` command-line front-end for the engine.
-- `crates/prompt-engine`: pure, data-driven prompt optimization engine (templates overridable via `EngineConfig`), designed for future WASM.
+- `crates/prompt-engine`: pure, data-driven prompt optimization engine (templates overridable via `EngineConfig`).
+- `crates/prompt-engine-wasm`: WebAssembly bindings so the engine runs in-browser, with no server.
 - `crates/shared-types`: API contracts shared by server and engine.
 - `docs`: product, architecture, security, and QA decisions.
 
