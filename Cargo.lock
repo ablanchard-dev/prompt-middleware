@@ -349,6 +349,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "prompt-cli"
+version = "0.1.0"
+dependencies = [
+ "prompt-engine",
+ "serde_json",
+ "shared-types",
+]
+
+[[package]]
 name = "prompt-engine"
 version = "0.1.0"
 dependencies = [
