@@ -6,7 +6,7 @@ mod state;
 
 use std::net::SocketAddr;
 
-use axum::Router;
+use axum::{extract::DefaultBodyLimit, Router};
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 
 use crate::{config::ServerConfig, state::AppState};
@@ -24,6 +24,9 @@ async fn main() {
     let state = AppState::new();
     let app = Router::new()
         .merge(routes::router())
+        // Reject oversized bodies before they reach the handler; the engine
+        // caps logical input at 20k chars, so 64 KiB of JSON is plenty.
+        .layer(DefaultBodyLimit::max(64 * 1024))
         .layer(middleware::cors::cors_layer(&config))
         .with_state(state);
 

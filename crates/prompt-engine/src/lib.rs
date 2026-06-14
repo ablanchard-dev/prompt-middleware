@@ -54,7 +54,7 @@ pub fn optimize_prompt(
     request: OptimizeRequest,
     config: &EngineConfig,
 ) -> Result<OptimizeResponse, EngineError> {
-    safety::input::validate_input(&request.raw_user_input)?;
+    safety::input::validate_input(&request.raw_user_input, config.max_input_chars)?;
 
     let detected_language = detect_language(&request.raw_user_input, request.language);
     let detected_intent = detect_intent(&request.raw_user_input);

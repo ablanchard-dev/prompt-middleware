@@ -186,27 +186,33 @@ fn domain_as_str_values() {
 
 #[test]
 fn validate_rejects_empty() {
-    assert!(validate_input("").is_err());
+    assert!(validate_input("", 20_000).is_err());
 }
 
 #[test]
 fn validate_rejects_whitespace_only() {
-    assert!(validate_input("   \n\t  ").is_err());
+    assert!(validate_input("   \n\t  ", 20_000).is_err());
 }
 
 #[test]
 fn validate_accepts_normal_input() {
-    assert!(validate_input("optimise mon prompt s'il te plait").is_ok());
+    assert!(validate_input("optimise mon prompt s'il te plait", 20_000).is_ok());
 }
 
 #[test]
 fn validate_rejects_too_large() {
     let big = "a".repeat(20_001);
-    assert!(validate_input(&big).is_err());
+    assert!(validate_input(&big, 20_000).is_err());
 }
 
 #[test]
 fn validate_accepts_at_size_limit() {
     let at_limit = "a".repeat(20_000);
-    assert!(validate_input(&at_limit).is_ok());
+    assert!(validate_input(&at_limit, 20_000).is_ok());
+}
+
+#[test]
+fn validate_respects_a_custom_max() {
+    assert!(validate_input("abcdef", 5).is_err());
+    assert!(validate_input("abc", 5).is_ok());
 }
