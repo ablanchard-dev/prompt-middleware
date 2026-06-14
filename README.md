@@ -32,6 +32,21 @@ echo "write unit tests for my parser" | prompt-optimize --lang en --json
 - No business logic in the content script.
 - No IO, network, database, or async runtime in `prompt-engine`.
 
+## WebAssembly
+
+The engine compiles to WebAssembly, so it can run in the browser with no server
+(nothing leaves the machine). Build the bindings and run the smoke test that
+calls the engine through WASM:
+
+```sh
+rustup target add wasm32-unknown-unknown
+cargo install wasm-bindgen-cli
+sh scripts/build-wasm.sh nodejs pkg
+node scripts/wasm-smoke.mjs        # -> fr / code / corriger
+```
+
+Use `sh scripts/build-wasm.sh web pkg` to produce a browser bundle.
+
 ## Quality
 
 - `cargo test` runs unit, integration, property-based (proptest), and doc tests.
