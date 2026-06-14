@@ -70,7 +70,10 @@ fn intent_coder() {
 
 #[test]
 fn intent_planifier() {
-    assert_eq!(detect_intent("make a plan for the launch"), Intent::Planifier);
+    assert_eq!(
+        detect_intent("make a plan for the launch"),
+        Intent::Planifier
+    );
 }
 
 #[test]
@@ -95,7 +98,10 @@ fn intent_rediger() {
 
 #[test]
 fn intent_transformer() {
-    assert_eq!(detect_intent("transforme ce texte en liste"), Intent::Transformer);
+    assert_eq!(
+        detect_intent("transforme ce texte en liste"),
+        Intent::Transformer
+    );
 }
 
 #[test]
@@ -123,32 +129,50 @@ fn domain_code() {
 
 #[test]
 fn domain_learning() {
-    assert_eq!(classify_domain("je veux apprendre le piano"), PromptDomain::Learning);
+    assert_eq!(
+        classify_domain("je veux apprendre le piano"),
+        PromptDomain::Learning
+    );
 }
 
 #[test]
 fn domain_business() {
-    assert_eq!(classify_domain("envoie un mail au client"), PromptDomain::Business);
+    assert_eq!(
+        classify_domain("envoie un mail au client"),
+        PromptDomain::Business
+    );
 }
 
 #[test]
 fn domain_cybersecurity() {
-    assert_eq!(classify_domain("audit owasp securite"), PromptDomain::Cybersecurity);
+    assert_eq!(
+        classify_domain("audit owasp securite"),
+        PromptDomain::Cybersecurity
+    );
 }
 
 #[test]
 fn domain_finance_trading() {
-    assert_eq!(classify_domain("strategie de trading"), PromptDomain::FinanceTrading);
+    assert_eq!(
+        classify_domain("strategie de trading"),
+        PromptDomain::FinanceTrading
+    );
 }
 
 #[test]
 fn domain_hr() {
-    assert_eq!(classify_domain("entretien de recrutement"), PromptDomain::Hr);
+    assert_eq!(
+        classify_domain("entretien de recrutement"),
+        PromptDomain::Hr
+    );
 }
 
 #[test]
 fn domain_general_fallback() {
-    assert_eq!(classify_domain("bonjour comment vas tu"), PromptDomain::General);
+    assert_eq!(
+        classify_domain("bonjour comment vas tu"),
+        PromptDomain::General
+    );
 }
 
 #[test]

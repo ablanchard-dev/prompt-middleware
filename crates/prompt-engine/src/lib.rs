@@ -79,4 +79,24 @@ mod tests {
         assert!(response.optimized_prompt.contains("pedagogue expert"));
         assert!(response.optimized_prompt.contains("Demande utilisateur"));
     }
+
+    #[test]
+    fn optimizes_an_english_code_prompt_in_auto_mode() {
+        let request = OptimizeRequest {
+            raw_user_input: "fix the bug in my python code".to_owned(),
+            target_platform: TargetPlatform::Chatgpt,
+            language: RequestedLanguage::Auto,
+            mode: OptimizeMode::Preview,
+            user_preferences: UserPreferences {
+                tone: None,
+                detail_level: DetailLevel::Normal,
+            },
+        };
+
+        let response = optimize_prompt(request, &EngineConfig::default()).unwrap();
+
+        assert_eq!(response.detected_language, "en");
+        assert_eq!(response.detected_domain, "code");
+        assert_eq!(response.detected_intent, "corriger");
+    }
 }

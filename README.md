@@ -1,5 +1,7 @@
 # Prompt Middleware
 
+[![CI](https://github.com/ablanchard-dev/prompt-middleware/actions/workflows/ci.yml/badge.svg)](https://github.com/ablanchard-dev/prompt-middleware/actions/workflows/ci.yml)
+
 Local-first browser middleware that optimizes user prompts before they are sent to existing LLM interfaces.
 
 ## Architecture
